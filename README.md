@@ -1,2 +1,2 @@
-# learn-DataStructure
-this project is use to learn data structure with java.
+# Learning data structures with java.
+This project is created for learning data structures with java.
