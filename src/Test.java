@@ -1,14 +1,15 @@
 import linearlist.LinearLists;
-import org.jcp.xml.dsig.internal.SignerOutputStream;
 import tree.binary.BiSortTree;
 import tree.binary.BiTrees;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by rogerlin on 2/1/17.
  */
 public class Test {
+
     public static void main(String[] args) {
         Random randomGenerator = new Random();
         // test sort algorithm
@@ -65,6 +66,19 @@ public class Test {
         System.out.println(Arrays.asList(numList));
         System.out.println();
 
+        // test binary search algorithm
+        System.out.println("Test biSearch algorithm");
+        System.out.println("------------------------------------------------");
+        numList = new Integer[]{11, 8, 36, 11, 41, 59, 98, 27, 86, 89};
+        LinearLists.quickSort(numList);
+        System.out.println("list: ");
+        System.out.println(Arrays.asList(numList));
+        System.out.print("element: ");
+        System.out.println(59);
+        System.out.print("index: ");
+        System.out.println(LinearLists.biSearch(numList, 59));
+        System.out.println();
+
         // test BiSortTree
         System.out.println("BiSortTree");
         System.out.println("------------------------------------------------");
@@ -90,4 +104,5 @@ public class Test {
             biSortTree.find(tree[randomGenerator.nextInt(tree.length)]);
         System.out.println("\nAverage Search Length: " + biSortTree.getAvgSearchLength());
     }
+
 }

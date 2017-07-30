@@ -1,20 +1,55 @@
 package linearlist;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by rogerlin on 2/2/17.
  */
 public class LinearLists {
+
     // search algorithm
-    public static <T> T seqSearch(List<? extends Comparable<T>> list, T key) {
-        T element = null;
-        return element;
+    // sequencial search
+    public static <T extends Comparable<T>> int seqSearch(List<T> list, T key) {
+        int index = -1;
+        return index;
     }
 
-    public static <T> T biSearch(List<? extends Comparable<T>> list, T key) {
-        T element = null;
-        return element;
+    // binary search
+    public static <T extends Comparable<T>> int biSearch(T[] list, T key) {
+        int index = -1;
+        if (list != null) {
+            index = biSearch(Arrays.asList(list), 0,  list.length, key);
+        }
+        return index;
+    }
+
+    public static <T extends Comparable<T>> int biSearch(List<T> list, T key) {
+        int index = -1;
+        if (list != null) {
+            index = biSearch(list, 0, list.size() - 1, key);
+        }
+        return index;
+    }
+
+    private static <T extends Comparable<T>> int biSearch(
+            List<T> list, int low, int high, T key) {
+        int index = -1;
+        if (list.size() > 0 && key != null) {
+            if (low <= high) {
+                int mid = (low + high) / 2;
+                if (key.compareTo(list.get(mid)) == 0) {
+                    index = mid;
+                } else if (key.compareTo(list.get(mid)) < 0) {
+                    high = mid - 1;
+                    index = biSearch(list, low, high, key);
+                } else {
+                    low = mid + 1;
+                    index = biSearch(list, low, high, key);
+                }
+            }
+        }
+        return index;
     }
 
     // sort algorithm
@@ -170,4 +205,5 @@ public class LinearLists {
 
     public static <T extends Comparable<T>> void mergingSort(List<T> list) {
     }
+
 }
